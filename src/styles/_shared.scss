@@ -1,0 +1,204 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Droid Arabic Kufi', Arial, Helvetica, sans-serif;
+}
+
+// Colors
+$primary-color: #1e2b3c;
+$secondary-color: #f5f7fe;
+$white-color: #ffffff;
+$light-blue: #5296cf;
+$dark-primary: #1e2b3c;
+$dark-primary-hover: #33485d;
+$success-color: #27ae60;
+$danger-color: #eb5757;
+$pending-color: #4f4f4f;
+$gray-color: #979797;
+$restuarant-primary-color: #6c63ff;
+$category-btn-color: #29671b;
+$category-btn-border-color: #33485d;
+$inline-table-view-section-padding: 19px;
+$nav-background: #010352;
+body {
+	overflow-x: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+	// background: $secondary-color;
+}
+
+// Media
+// Small phones
+$screen-tn-max: 450px;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-max: 596px;
+// Small tablets (portrait view)
+$screen-md-max: 768px;
+// Tablets and small desktops
+$screen-lg-max: 992px;
+
+// Phone devices
+@mixin tn {
+	@media (max-width: #{$screen-tn-max}) {
+		@content;
+	}
+}
+
+// Small devices
+@mixin sm {
+	@media (max-width: #{$screen-sm-max}) {
+		@content;
+	}
+}
+
+// Medium devices
+@mixin md {
+	@media (max-width: #{$screen-md-max}) {
+		@content;
+	}
+}
+
+// Large devices
+@mixin lg {
+	@media (max-width: #{$screen-lg-max}) {
+		@content;
+	}
+}
+
+@mixin centerChilds {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin rtlDirection {
+	direction: rtl;
+}
+
+// Scroll bar
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	transition: 0.5s;
+	background: #888;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+:root {
+	font-size: 18px;
+	scroll-behavior: smooth;
+
+	@include lg {
+		font-size: 18px;
+	}
+	@include md {
+		font-size: 16px;
+	}
+	@include sm {
+		font-size: 14px;
+	}
+	@include tn {
+		font-size: 12px;
+	}
+}
+
+.section-header {
+	@include centerChilds;
+	@include rtlDirection;
+	gap: 15px;
+	p {
+		font-size: 2.5rem;
+	}
+}
+
+.total-footer {
+	@include rtlDirection;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	font-size: 1.5rem;
+	padding-block: 20px;
+}
+
+.orders-container {
+	padding-bottom: 100px;
+	min-height: 100vh;
+}
+
+.no-data-container {
+	@include centerChilds;
+	flex-direction: column;
+	padding-block: 50px 30px;
+	img {
+		max-width: 75px;
+	}
+	p {
+		margin-block: 15px;
+		font-size: 1.5rem;
+	}
+
+	&.expand {
+		height: 80vh;
+		img {
+			max-width: 125px;
+		}
+		p {
+			font-size: 2rem;
+		}
+	}
+}
+
+.p-input-icon-right > i:last-of-type {
+	right: auto;
+	left: 0.75rem;
+	top: calc(50% - 0.75rem);
+}
+
+.p-input-icon-right > .p-inputtext {
+	padding-right: 1rem;
+	padding-left: 2.5rem;
+}
+
+.p-toast {
+	@include rtlDirection;
+}
+.p-toast-summary {
+	margin-inline: 10px;
+}
+
+@mixin tbaleStatus($beforeElementWidth) {
+	&::before {
+		content: '';
+		width: $beforeElementWidth;
+		position: absolute;
+		top: $beforeElementWidth;
+		bottom: $beforeElementWidth;
+		right: 0;
+	}
+	&.free::before {
+		background: $success-color;
+	}
+	&.busy::before {
+		background: $danger-color;
+	}
+}
