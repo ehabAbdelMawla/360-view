@@ -48,8 +48,7 @@ export default function App() {
 	];
 
 	return (
-		<div>
-			App
+		<div className="image-container">
 			<img
 				src={images[currentImageIndex]}
 				draggable={false}

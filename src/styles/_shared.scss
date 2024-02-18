@@ -202,3 +202,7 @@ $screen-lg-max: 992px;
 		background: $danger-color;
 	}
 }
+
+.image-container {
+	@include centerChilds;
+}
